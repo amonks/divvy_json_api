@@ -1,0 +1,24 @@
+%h1 
+	= "bike " + @bike.bike_id.to_s
+- if @bike.trips
+	%h2 
+		= @trips.length.to_s
+		trips
+	%ol 
+		- @trips.each do |trip|
+			%li 
+				%strong id: 
+				= trip.trip_id
+				%strong duration: 
+				= trip.trip_duration.sub(',','').to_i / 60
+				minutes
+				%p 
+					%strong from
+					= trip.from_station_name
+					%strong to
+					= trip.to_station_name
+				%p
+					%strong from
+					= trip.start_time
+					%strong until
+					= trip.stop_time
