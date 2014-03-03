@@ -1,5 +1,33 @@
 #	divvy data json api!
 
+## get the data
+
+1. download [the data](https://divvybikes.com/datachallenge)
+
+2. download [postgres.app](http://postgresapp.com/)
+
+3. prepare the data by removing the header rows from the csv files
+
+4. make the tables:
+
+	`create table stations (NAME varchar, LATITUDE double precision, LONGITUDE double precision, DPCAPACITY smallint);`
+
+	`create table trips (TRIP_ID int, START_TIME timestamp, STOP_TIME timestamp, BIKE_BIKE_ID smallint, TRIP_DURATION varchar, FROM_STATION_ID varchar, FROM_STATION_NAME varchar, TO_STATION_ID varchar, TO_STATION_NAME varchar, USER_TYPE varchar, GENDER varchar, BIRTH_YEAR smallint);`
+
+	`create table bikes (BIKE_ID int, TRIP_COUNT smallint, BIRTH_TRIP_ID int, DEATH_TRIP_ID int, BIRTH_TIME timestamp, DEATH_TIME timestamp, BIRTH_STATION varchar, DEATH_STATION varchar)`
+
+5. load the data:
+
+	`copy stations from '/path/path/path/Divvy_Stations_2013.csv' DELIMITERS ',' CSV;  `
+	
+	`copy trips from '/path/path/path/Divvy_Trips_2013.csv' DELIMITERS ',' CSV;  `
+
+6. install the bundle: `bundle install`
+
+7. uncomment the annotators in `app.rb`
+
+8. run the app `bundle exec ruby app.rb`
+
 ## trips
 
 ### example `/trip/1`

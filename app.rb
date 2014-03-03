@@ -18,6 +18,7 @@ class Trip
   property :from_station_name, String
   property :to_station_name, String
   property :user_type, String
+  property :gender, String
   property :birth_year, Integer
 
   # belongs_to :from_station, 'Station',
@@ -53,8 +54,8 @@ class Bike
   property :death_trip_id, Integer
   property :birth_time, DateTime
   property :death_time, DateTime
-  property :birth_place, String
-  property :death_place, String
+  property :birth_station, String
+  property :death_station, String
   has n, :trips
 end
 
@@ -136,8 +137,8 @@ def update_bikes(range)
             :death_trip_id => @trips.last.trip_id,
             :birth_time => @trips.first.start_time,
             :death_time => @trips.last.stop_time,
-            :birth_place => @trips.first.from_station_name,
-            :death_place => @trips.last.to_station_name,
+            :birth_station => @trips.first.from_station_name,
+            :death_station => @trips.last.to_station_name,
           )
         end
 
