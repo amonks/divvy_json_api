@@ -118,16 +118,6 @@ def make_bikes(range)
         @bike = Bike.first_or_create(:bike_id => @trip.bike_id)
         @trips = Trip.all(:bike_bike_id => @bike.bike_id)
 
-        @bike.update(
-          :trip_count => @trips.length,
-          :birth_trip_id => @trips.first.trip_id,
-          :death_trip_id => @trips.last.trip_id,
-          :birth_time => @trips.first.start_time,
-          :death_time => @trips.last.stop_time,
-          :birth_place => @trips.first.from_station_name,
-          :death_place => @trips.last.to_station_name
-        )
-
         if (i % 10 == 0)
             puts i
         end
